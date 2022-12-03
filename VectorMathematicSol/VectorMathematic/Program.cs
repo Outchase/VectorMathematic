@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.Versioning;
+using VectorMathematic.Properties;
 
 namespace VectorMathematic
 {
@@ -18,34 +20,32 @@ namespace VectorMathematic
             vectorB.vectorLength = logic.CalculateVectorLength(vectorB.x, vectorB.y, vectorB.z);
             vectorB.vectorSquareLength = logic.CalculateSquare(vectorB.vectorLength);
 
+            // static
             //distanceVector = CalculateVectorDistance(vectorA, vectorB, logic);
 
-            //non-static
+            // non-static
             distanceVector = logic.CalculateVectorDistance(vectorA, vectorB);
 
             //vectorB.vectorLength = logic.CalculateVectorLength(vectorB.x, vectorB.y, vectorB.z);
-            Console.WriteLine("<Vector A>");
-            Console.WriteLine(" X= " + vectorA.x);
-            Console.WriteLine(" Y= " + vectorA.y);
-            Console.WriteLine(" Z= " + vectorA.z);
-            Console.WriteLine(" Lenght (x)= " + String.Format("{0:0.0000}",vectorA.vectorLength));
-            Console.WriteLine(" Square Lenght (x²)= " + String.Format("{0:0.0000}",vectorA.vectorSquareLength));
+            Console.WriteLine(Resources.vectorAName);
+            Console.WriteLine(Resources.xEqual+ vectorA.x + Resources.yEqual + vectorA.y + Resources.zEqual + vectorA.z);
+            Console.WriteLine(Resources.lenghtEqual + String.Format("{0:0.0000}",vectorA.vectorLength));
+            Console.WriteLine(Resources.squareLenghtEqual + String.Format("{0:0.0000}",vectorA.vectorSquareLength));
 
-            Console.WriteLine("\n<Vector B>");
-            Console.WriteLine(" X= " + vectorB.x);
-            Console.WriteLine(" Y= " + vectorB.y);
-            Console.WriteLine(" Z= " + vectorB.z);
-            Console.WriteLine(" Lenght (x)= " + String.Format("{0:0.0000}", vectorB.vectorLength));
-            Console.WriteLine(" Square Lenght (x²)= " + String.Format("{0:0.0000}", vectorB.vectorSquareLength) +"\n");
+            Console.WriteLine("\n" + Resources.vectorBName);
+            Console.WriteLine(Resources.xEqual + vectorB.x + Resources.yEqual + vectorB.y + Resources.zEqual + vectorB.z);
+            Console.WriteLine(Resources.lenghtEqual + String.Format("{0:0.0000}", vectorB.vectorLength));
+            Console.WriteLine(Resources.squareLenghtEqual + String.Format("{0:0.0000}", vectorB.vectorSquareLength) +"\n");
 
             logic.CalculateVectorAddition(vectorA, vectorB);
             logic.CalculateVectorSubtraction(vectorA, vectorB);
             logic.CalculateScalarMultiplication(2, vectorA, "A");
             logic.CalculateScalarMultiplication(2, vectorB, "B");
 
-            Console.WriteLine("\nDistance between vector A & Vector B= " + String.Format("{0:0.0000}", distanceVector));
+            Console.WriteLine("\n"+Resources.distanceEqual + String.Format("{0:0.0000}", distanceVector));
         }
 /*
+        // static
         // Formula: dist(u,v)
         // ||u-v|| √[(u1-v1)²+(u2-v2)²(u3-v3)²]
         static float CalculateVectorDistance(Vektors u, Vektors v, Logics logic)

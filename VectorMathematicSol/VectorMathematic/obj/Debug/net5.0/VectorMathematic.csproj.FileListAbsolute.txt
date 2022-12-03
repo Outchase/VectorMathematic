@@ -30,3 +30,5 @@ D:\SAE\1sem\4F01\VectorMathematic\VectorMathematicSol\VectorMathematic\bin\Debug
 D:\SAE\1sem\4F01\VectorMathematic\VectorMathematicSol\VectorMathematic\bin\Debug\net5.0\VectorMathematic.pdb
 D:\SAE\1sem\4F01\VectorMathematic\VectorMathematicSol\VectorMathematic\obj\Debug\net5.0\VectorMathematic.genruntimeconfig.cache
 D:\SAE\1sem\4F01\VectorMathematic\VectorMathematicSol\VectorMathematic\obj\Debug\net5.0\ref\VectorMathematic.dll
+E:\SAE\1sem\4F01\VectorMathematic\VectorMathematicSol\VectorMathematic\obj\Debug\net5.0\VectorMathematic.Properties.Resources.resources
+E:\SAE\1sem\4F01\VectorMathematic\VectorMathematicSol\VectorMathematic\obj\Debug\net5.0\VectorMathematic.csproj.GenerateResource.cache

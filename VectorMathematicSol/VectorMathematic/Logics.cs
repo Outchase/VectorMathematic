@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VectorMathematic.Properties;
 
 namespace VectorMathematic
 {
@@ -35,10 +36,8 @@ namespace VectorMathematic
             float vectorWY = vectorU.y + vectorV.y;
             float vectorWZ = vectorU.z + vectorV.z;
 
-            Console.WriteLine("<Vector addition>\n Vector A + Vector B = Vector C");
-            Console.WriteLine(" X= " + vectorWX);
-            Console.WriteLine(" Y= " + vectorWY);
-            Console.WriteLine(" Z= " + vectorWZ + "\n");
+            Console.WriteLine(Resources.vectorAdditionTitle);
+            Console.WriteLine(Resources.xEqual+ vectorWX + Resources.yEqual + vectorWY + Resources.zEqual + vectorWZ + "\n");
         }
 
         // u-> - v-> = |(uX,uY,uZ) - (vX,vY,vZ) = (uX-vX,uY-vY,uZ-vZ) = (wX,wY,wZ) = w->| 
@@ -48,10 +47,8 @@ namespace VectorMathematic
             float vectorWY = vectorU.y - vectorV.y;
             float vectorWZ = vectorU.z - vectorV.z;
 
-            Console.WriteLine("<Vector subtraction>\n Vector A - Vector B = Vector C");
-            Console.WriteLine(" X= " + vectorWX);
-            Console.WriteLine(" Y= " + vectorWY);
-            Console.WriteLine(" Z= " + vectorWZ + "\n");
+            Console.WriteLine(Resources.vectorSubtractionTitle);
+            Console.WriteLine(Resources.xEqual + vectorWX + Resources.yEqual + vectorWY + Resources.zEqual + vectorWZ + "\n");
         }
 
         // w -> = s * v-> |w-> = s * (vX,vY,vZ) = (s*vX,s*vY,s*vZ)|
@@ -61,11 +58,8 @@ namespace VectorMathematic
             float vectorWY = s * v.y;
             float vectorWZ = s * v.z;
 
-            Console.WriteLine("<Scalar Multiplication>\n Scalar ("+ s +") * Vector "+vectorName+" = Vector C");
-            Console.WriteLine(" X= " + vectorWX);
-            Console.WriteLine(" Y= " + vectorWY);
-            Console.WriteLine(" Z= " + vectorWZ + "\n");
-
+            Console.WriteLine(Resources.scalarMultiplicationTitle1+ s + Resources.scalarMultiplicationTitle2 +vectorName+ Resources.scalarMultiplicationTitle3);
+            Console.WriteLine(Resources.xEqual + vectorWX + Resources.yEqual + vectorWY + Resources.zEqual + vectorWZ + "\n");
         }
 
         // Formula: dist(u,v)
