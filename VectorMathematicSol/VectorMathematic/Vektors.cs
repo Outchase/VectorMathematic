@@ -10,42 +10,25 @@ namespace VectorMathematic
     internal class Vektors
     {
         public float x, y, z;
-
-        float vectorLength = CalculateVectorLength(x, y, z);
+        public float vectorLength;
+        public float vectorSquareLength;
 
         public Vektors()
         {
-            this.x = 0;
-            this.y = 0;
-            this.z = 0;
+            x = 0;
+            y = 0;
+            z = 0;
+
+            //vectorLength = CalculateVectorLength(x, y, z); // makes no sense when result is always 0
         }
 
-        public Vektors(float x, float y, float z)
+
+        public Vektors(float setX, float setY, float setZ)
         {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-
+            x = setX;
+            y = setY;
+            z = setZ;
         }
 
-
-        public float CalculateVectorLength(float x, float y, float z)
-        {
-            float result = 0;
-
-            //float baseSquare = CalculateSquareLength();
-            float heightSquare = CalculateSquareLength(z);
-
-            
-
-            return result;
-        }
-
-        public float CalculateSquareLength(float addend)
-        {
-            float result = (float)Math.Pow(addend,2);
-
-            return result;
-        }
     }
 }
