@@ -13,7 +13,7 @@ namespace VectorMathematic
         // |v->| =  √(a1² + a2² + a3²) Calculate lenght of vector
         public float CalculateVectorLength(float vectorX, float vectorY, float vectorZ)
         {
-            float a1 = CalculateSquare(vectorX);
+            float a1 = CalculateSquare(vectorX); //give whole vector
             float a2 = CalculateSquare(vectorY);
             float a3 = CalculateSquare(vectorZ);
 
@@ -21,7 +21,7 @@ namespace VectorMathematic
             return result;
         }
 
-        // x²
+        // x² //static method parameter as vector set as a²
         public float CalculateSquare(float addend)
         {
             float result = (float)Math.Pow(addend, 2);
