@@ -13,8 +13,6 @@ namespace VectorMathematic
     internal class Vektors
     {
         public float x, y, z;
-        public float vectorLength; //remove
-        public float vectorSquareLength; //remove
 
         public Vektors()
         {
@@ -32,9 +30,50 @@ namespace VectorMathematic
             z = setZ;
         }
 
-        static Vectors operator +(Vectors a1, Vectors a2) {
-            static Vectors result = a1 + a2;
+        // u-> + v-> = |(uX,uY,uZ) + (vX,vY,vZ) = (uX+vX,uY+vY,uZ+vZ) = (wX,wY,wZ) = w->| 
+        public static Vektors operator +(Vektors a1, Vektors a2) {
+            Vektors result = new();
 
+            result.x = a1.x + a2.x;
+            result.y = a1.y + a2.y;
+            result.z = a1.z + a2.z;
+
+            return result;
+        }
+
+        // u-> - v-> = |(uX,uY,uZ) - (vX,vY,vZ) = (uX-vX,uY-vY,uZ-vZ) = (wX,wY,wZ) = w->| 
+        public static Vektors operator -(Vektors a1, Vektors a2)
+        {
+            Vektors result = new();
+
+            result.x = a1.x - a2.x;
+            result.y = a1.y - a2.y;
+            result.z = a1.z - a2.z;
+
+            return result;
+        }
+
+        // w -> = s * v-> |w-> = s * (vX,vY,vZ) = (s*vX,s*vY,s*vZ)|
+        public static Vektors operator *(Vektors a1, int s)
+        {
+            Vektors result = new();
+
+            result.x = s * a1.x;
+            result.y = s * a1.y;
+            result.z = s * a1.z;
+
+            return result;
+        }
+
+        public static bool Equals(Vektors a1, Vektors a2)
+        {
+            bool result = false;
+
+            if (a1 == a2) {
+                if (a1.x == a2.x && a1.y == a2.y && a1.z == a2.z) {
+                    result = true;
+                }
+            }
 
             return result;
         }
@@ -42,67 +81,40 @@ namespace VectorMathematic
         //set functions here as static only functions static
 
         // v-> = (a1, a2, a3) 3d
-        // |v->| =  √(a1² + a2² + a3²) Calculate lenght of vector
-        public float CalculateVectorLength(float vectorX, float vectorY, float vectorZ)
+        // |v->| =  √(a1.x² + a2.y² + a3.z²) Calculate lenght of vector
+        public float CalculateVectorLength(Vektors a1)
         {
-            float a1 = CalculateSquare(vectorX); //give whole vector
-            float a2 = CalculateSquare(vectorY);
-            float a3 = CalculateSquare(vectorZ);
+            CalculateSquare(a1);
+            float result = (float)Math.Sqrt(a1.x + a1.y +a1.z);
 
-            float result = (float)Math.Sqrt(a1 + a2 + a3);
             return result;
         }
 
         // x² //static method parameter as vector set as a²
-        public float CalculateSquare(float addend)
+        public Vektors CalculateSquare(Vektors a1)
         {
-            float result = (float)Math.Pow(addend, 2);
+            Vektors result = new();
+
+            result.x = (float)Math.Pow(a1.x, 2);
+            result.y = (float)Math.Pow(a1.y, 2);
+            result.z = (float)Math.Pow(a1.z, 2);
 
             return result;
         }
 
-        // u-> + v-> = |(uX,uY,uZ) + (vX,vY,vZ) = (uX+vX,uY+vY,uZ+vZ) = (wX,wY,wZ) = w->| 
-        public void CalculateVectorAddition(Vektors vectorU, Vektors vectorV)
-        {
-            float vectorWX = vectorU.x + vectorV.x;
-            float vectorWY = vectorU.y + vectorV.y;
-            float vectorWZ = vectorU.z + vectorV.z;
-
-            Console.WriteLine(Resources.vectorAdditionTitle);
-            Console.WriteLine(Resources.xEqual + vectorWX + Resources.yEqual + vectorWY + Resources.zEqual + vectorWZ + "\n");
-        }
-
-        // u-> - v-> = |(uX,uY,uZ) - (vX,vY,vZ) = (uX-vX,uY-vY,uZ-vZ) = (wX,wY,wZ) = w->| 
-        public void CalculateVectorSubtraction(Vektors vectorU, Vektors vectorV)
-        {
-            float vectorWX = vectorU.x - vectorV.x;
-            float vectorWY = vectorU.y - vectorV.y;
-            float vectorWZ = vectorU.z - vectorV.z;
-
-            Console.WriteLine(Resources.vectorSubtractionTitle);
-            Console.WriteLine(Resources.xEqual + vectorWX + Resources.yEqual + vectorWY + Resources.zEqual + vectorWZ + "\n");
-        }
-
-        // w -> = s * v-> |w-> = s * (vX,vY,vZ) = (s*vX,s*vY,s*vZ)|
-        public void CalculateScalarMultiplication(int s, Vektors v, string vectorName)
-        {
-            float vectorWX = s * v.x;
-            float vectorWY = s * v.y;
-            float vectorWZ = s * v.z;
-
-            Console.WriteLine(Resources.scalarMultiplicationTitle1 + s + Resources.scalarMultiplicationTitle2 + vectorName + Resources.scalarMultiplicationTitle3);
-            Console.WriteLine(Resources.xEqual + vectorWX + Resources.yEqual + vectorWY + Resources.zEqual + vectorWZ + "\n");
-        }
-
         // Formula: dist(u,v)
-        // ||u-v|| √[(u1-v1)²+(u2-v2)²(u3-v3)²]
+        // ||u-v|| √[(u.x-v.x)²+(u.y-v.y)²(u.z-v.z)²] || √(u-v)²
         public float CalculateVectorDistance(Vektors u, Vektors v)
         {
-            float distUVX = CalculateSquare(u.x - v.x);
-            float distUVY = CalculateSquare(u.y - v.y);
-            float distUVZ = CalculateSquare(u.z - v.z);
+            Vektors result = new();
 
-            float dist = (float)Math.Sqrt(distUVX + distUVY + distUVZ);
+            result.x = u.x - v.x;
+            result.y = u.y - v.y;
+            result.z = u.z - v.z;
+
+            Vektors tmp = CalculateSquare(result);
+
+            float dist = (float)Math.Sqrt(tmp.x + tmp.y +tmp.z);
 
             return dist;
         }
